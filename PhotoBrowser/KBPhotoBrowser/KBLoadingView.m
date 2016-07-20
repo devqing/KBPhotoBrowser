@@ -40,11 +40,17 @@
     
     CGFloat xCenter = rect.size.width * 0.5;
     CGFloat yCenter = rect.size.height * 0.5;
+    
+    [[UIColor grayColor] set];
+    CGContextSetLineWidth(ctx, 3);
+    CGContextAddArc(ctx, xCenter, yCenter, 10, 0, M_PI*2, 0);
+    CGContextStrokePath(ctx);
+
     [[UIColor whiteColor] set];
     CGContextSetLineCap(ctx, kCGLineCapRound);
     CGContextSetLineWidth(ctx, 3);
-    CGFloat to = M_PI / 1.5 + _angleInterval; // 初始值0.05
-    CGFloat radius = 15;
+    CGFloat to = M_PI / 2 + _angleInterval; // 初始值0.05
+    CGFloat radius = 10;
     CGContextAddArc(ctx, xCenter, yCenter, radius, _angleInterval, to, 0);
     CGContextStrokePath(ctx);
 }

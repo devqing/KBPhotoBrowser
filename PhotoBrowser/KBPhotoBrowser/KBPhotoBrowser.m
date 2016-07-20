@@ -8,31 +8,38 @@
 
 #import "KBPhotoBrowser.h"
 #import "KBPhotoView.h"
+#import "KBBarView.h"
 
 #define WIDTH [UIScreen mainScreen].bounds.size.width
 #define HEIGHT [UIScreen mainScreen].bounds.size.height
 
 
-@interface KBPhotoBrowser()<UIScrollViewDelegate>
+@interface KBPhotoBrowser()<UIScrollViewDelegate,KBPhotoViewDelegate>
 
 @property (nonatomic, strong) NSArray *imagesUrl;
 @property (nonatomic, strong) NSMutableSet *visibleImageViews;
 @property (nonatomic, strong) NSMutableSet *reusedImageViews;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSArray *imageNames;
+@property (nonatomic, strong) KBBarView *barView;
 
 @end
 
 @implementation KBPhotoBrowser
+{
+    NSInteger _currentShowIndex;
+}
 
 #pragma mark --life cycle
 - (instancetype)initWithImages:(NSArray *)images index:(NSInteger)index
 {
     if (self = [super initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)]) {
+        _currentShowIndex = index;
         self.imageNames = images;
         [UIApplication sharedApplication].statusBarHidden = YES;
         self.backgroundColor = [UIColor blackColor];
         [self addSubview:self.scrollView];
+        [self addSubview:self.barView];
     }
     return self;
 }
@@ -47,7 +54,7 @@
     [UIView animateWithDuration:0.3 animations:^{
         self.alpha = 1;
     } completion:^(BOOL finished) {
-        [self showImageViewAtIndex:0];
+        [self showImageViewAtIndex:_currentShowIndex];
     }];
 }
 
@@ -55,6 +62,7 @@
 {
     [super layoutSubviews];
     self.scrollView.frame = self.bounds;
+    self.barView.frame = CGRectMake(0, HEIGHT-40, WIDTH, 40);
 }
 
 
@@ -63,6 +71,12 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     [self showImages];
+    
+    NSInteger currentIndex = scrollView.contentOffset.x/WIDTH+0.5;
+    
+    NSLog(@"%ld",(long)currentIndex);
+    
+    [self.barView showCurrentPageIndex:currentIndex+1];
 }
 
 #pragma mark - Private Method
@@ -124,6 +138,7 @@
         [self.reusedImageViews removeObject:photoView];
     } else {
         photoView = [[KBPhotoView alloc] init];
+        photoView.delegate = self;
     }
     
     CGRect bounds = self.scrollView.bounds;
@@ -137,6 +152,16 @@
     [self.scrollView addSubview:photoView];
 }
 
+- (void)dismiss
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
+    
+}
+
 #pragma mark --getter&setter
 - (UIScrollView *)scrollView
 {
@@ -148,8 +173,17 @@
         _scrollView.showsHorizontalScrollIndicator = NO;
         _scrollView.showsVerticalScrollIndicator = NO;
         _scrollView.contentSize  = CGSizeMake(WIDTH * self.imageNames.count, 0);
+        [_scrollView setContentOffset:CGPointMake(WIDTH*_currentShowIndex, 0) animated:NO];
     }
     return _scrollView;
+}
+
+- (KBBarView *)barView
+{
+    if (_barView == nil) {
+        _barView = [[KBBarView alloc] initWithTotalPage:self.imageNames.count currentPage:_currentShowIndex+1];
+    }
+    return _barView;
 }
 
 - (NSMutableSet *)visibleImageViews {

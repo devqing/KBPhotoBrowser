@@ -29,9 +29,17 @@
     if (self = [super initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)]) {
         [self addSubview:self.scrollView];
         [self.scrollView addSubview:self.imageView];
-
+        self.userInteractionEnabled = YES;
+        [self addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)]];
     }
     return self;
+}
+
+- (void)dismiss
+{
+    if ([self.delegate respondsToSelector:@selector(dismiss)]) {
+        [self.delegate dismiss];
+    }
 }
 
 - (void)layoutSubviews
@@ -44,17 +52,38 @@
 - (void)showImage:(NSString *)url
 {
     self.imageView.frame = CGRectZero;
+    self.scrollView.contentSize = CGSizeMake(0, 0);
     KBLoadingView *loadingView = [self viewWithTag:1000];
     [loadingView removeFromSuperview];
     [self downloadImageWithUrl:url];
+}
+
+- (void)saveImage
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        
+        UIImageWriteToSavedPhotosAlbum(self.imageView.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    });
+}
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error) {
+        
+    } else {
+
+    }
 }
 
 - (void)resizeImageView:(UIImage *)image
 {
     CGSize imageSize = image.size;
     CGFloat imageViewHeight = WIDTH/(imageSize.width/imageSize.height);
-    self.imageView.frame = CGRectMake(0, (HEIGHT-imageViewHeight)/2, WIDTH,imageViewHeight);
+    CGFloat imageViewY = HEIGHT-imageViewHeight>=0?(HEIGHT-imageViewHeight)/2:0;
+    self.imageView.frame = CGRectMake(0, imageViewY, WIDTH,imageViewHeight);
     self.imageView.image = image;
+    CGFloat offsety = imageViewHeight-HEIGHT>=0?(imageViewHeight):0;
+    self.scrollView.contentSize = CGSizeMake(0, offsety);
 }
 
 - (void)downloadImageWithUrl:(NSString *)url
@@ -77,6 +106,8 @@
     if (_scrollView == nil) {
         _scrollView = [[UIScrollView alloc] init];
         _scrollView.delegate = self;
+        _scrollView.showsHorizontalScrollIndicator = NO;
+        _scrollView.showsVerticalScrollIndicator = NO;
     }
     return _scrollView;
 }
@@ -85,6 +116,8 @@
 {
     if (_imageView == nil) {
         _imageView = [[UIImageView alloc] init];
+        _imageView.userInteractionEnabled = YES;
+        [_imageView addGestureRecognizer:[[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(saveImage)]];
     }
     return _imageView;
 }

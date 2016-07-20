@@ -10,4 +10,8 @@
 
 @interface KBBarView : UIView
 
+- (instancetype)initWithTotalPage:(NSInteger)totalPage currentPage:(NSInteger)currentPage;
+
+- (void)showCurrentPageIndex:(NSInteger)index;
+
 @end

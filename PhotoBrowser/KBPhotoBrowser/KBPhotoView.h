@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class KBPhotoView;
+
+@protocol KBPhotoViewDelegate <NSObject>
+
+- (void)dismiss;
+
+@end
+
 @interface KBPhotoView : UIView
 
 - (void)showImage:(NSString *)url;
+@property (nonatomic, weak) id<KBPhotoViewDelegate> delegate;
 
 @end
