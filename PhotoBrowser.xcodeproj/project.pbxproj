@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		883E7BDF1D45D41800A344A6 /* ImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 883E7BDE1D45D41800A344A6 /* ImageView.m */; };
+		883E7C091D48A44400A344A6 /* frameworkTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 883E7C081D48A44400A344A6 /* frameworkTests.m */; };
 		88A3C18B1D3E2E8C00B4BB02 /* KBPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A3C18A1D3E2E8B00B4BB02 /* KBPhotoBrowser.m */; };
 		88A3C18E1D3E2EB900B4BB02 /* KBPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A3C18D1D3E2EB900B4BB02 /* KBPhotoView.m */; };
 		88A3C1911D3E2ECD00B4BB02 /* KBBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A3C1901D3E2ECD00B4BB02 /* KBBarView.m */; };
@@ -23,6 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		883E7C051D48A44400A344A6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88CDAEFD1CCF076B0017DE61 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88CDAF041CCF076B0017DE61;
+			remoteInfo = PhotoBrowser;
+		};
 		88CDAF1F1CCF076B0017DE61 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 88CDAEFD1CCF076B0017DE61 /* Project object */;
@@ -39,9 +48,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		883E7C141D48A44400A344A6 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		15FCEB23807B60AC2CC97BF5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		17BEBB58356E4DC0D6156216 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		883E7BDD1D45D41800A344A6 /* ImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ImageView.h; path = KBPhotoBrowser/ImageView.h; sourceTree = "<group>"; };
+		883E7BDE1D45D41800A344A6 /* ImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ImageView.m; path = KBPhotoBrowser/ImageView.m; sourceTree = "<group>"; };
+		883E7BFA1D48A44400A344A6 /* framework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = framework.h; sourceTree = "<group>"; };
+		883E7BFC1D48A44400A344A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		883E7C011D48A44400A344A6 /* frameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = frameworkTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		883E7C081D48A44400A344A6 /* frameworkTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = frameworkTests.m; sourceTree = "<group>"; };
+		883E7C0A1D48A44400A344A6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88A3C1891D3E2E8B00B4BB02 /* KBPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBPhotoBrowser.h; sourceTree = "<group>"; };
 		88A3C18A1D3E2E8B00B4BB02 /* KBPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBPhotoBrowser.m; sourceTree = "<group>"; };
 		88A3C18C1D3E2EB900B4BB02 /* KBPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBPhotoView.h; sourceTree = "<group>"; };
@@ -70,6 +99,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		883E7BFE1D48A44400A344A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		88CDAF021CCF076B0017DE61 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -104,6 +140,24 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		883E7BF91D48A44400A344A6 /* framework */ = {
+			isa = PBXGroup;
+			children = (
+				883E7BFA1D48A44400A344A6 /* framework.h */,
+				883E7BFC1D48A44400A344A6 /* Info.plist */,
+			);
+			path = framework;
+			sourceTree = "<group>";
+		};
+		883E7C071D48A44400A344A6 /* frameworkTests */ = {
+			isa = PBXGroup;
+			children = (
+				883E7C081D48A44400A344A6 /* frameworkTests.m */,
+				883E7C0A1D48A44400A344A6 /* Info.plist */,
+			);
+			path = frameworkTests;
+			sourceTree = "<group>";
+		};
 		88A3C1881D3E2E6900B4BB02 /* KBPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +179,8 @@
 				88CDAF071CCF076B0017DE61 /* PhotoBrowser */,
 				88CDAF211CCF076B0017DE61 /* PhotoBrowserTests */,
 				88CDAF2C1CCF076B0017DE61 /* PhotoBrowserUITests */,
+				883E7BF91D48A44400A344A6 /* framework */,
+				883E7C071D48A44400A344A6 /* frameworkTests */,
 				88CDAF061CCF076B0017DE61 /* Products */,
 				698567460BB93D5BF597DABD /* Pods */,
 				902B2B6FE2DB8364AE662D1E /* Frameworks */,
@@ -137,6 +193,7 @@
 				88CDAF051CCF076B0017DE61 /* PhotoBrowser.app */,
 				88CDAF1E1CCF076B0017DE61 /* PhotoBrowserTests.xctest */,
 				88CDAF291CCF076B0017DE61 /* PhotoBrowserUITests.xctest */,
+				883E7C011D48A44400A344A6 /* frameworkTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,6 +206,8 @@
 				88CDAF0C1CCF076B0017DE61 /* AppDelegate.m */,
 				88CDAF0E1CCF076B0017DE61 /* ViewController.h */,
 				88CDAF0F1CCF076B0017DE61 /* ViewController.m */,
+				883E7BDD1D45D41800A344A6 /* ImageView.h */,
+				883E7BDE1D45D41800A344A6 /* ImageView.m */,
 				88CDAF111CCF076B0017DE61 /* Main.storyboard */,
 				88CDAF141CCF076B0017DE61 /* Assets.xcassets */,
 				88CDAF161CCF076B0017DE61 /* LaunchScreen.storyboard */,
@@ -195,6 +254,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		883E7C001D48A44400A344A6 /* frameworkTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 883E7C151D48A44400A344A6 /* Build configuration list for PBXNativeTarget "frameworkTests" */;
+			buildPhases = (
+				883E7BFD1D48A44400A344A6 /* Sources */,
+				883E7BFE1D48A44400A344A6 /* Frameworks */,
+				883E7BFF1D48A44400A344A6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				883E7C061D48A44400A344A6 /* PBXTargetDependency */,
+			);
+			name = frameworkTests;
+			productName = frameworkTests;
+			productReference = 883E7C011D48A44400A344A6 /* frameworkTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		88CDAF041CCF076B0017DE61 /* PhotoBrowser */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 88CDAF321CCF076B0017DE61 /* Build configuration list for PBXNativeTarget "PhotoBrowser" */;
@@ -205,6 +282,7 @@
 				88CDAF031CCF076B0017DE61 /* Resources */,
 				7D05D455A7AA443713E1A267 /* Embed Pods Frameworks */,
 				1172938FA677A243D14B4AA2 /* Copy Pods Resources */,
+				883E7C141D48A44400A344A6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -260,9 +338,13 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = RT;
 				TargetAttributes = {
+					883E7C001D48A44400A344A6 = {
+						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 26J67QGDKL;
+						TestTargetID = 88CDAF041CCF076B0017DE61;
+					};
 					88CDAF041CCF076B0017DE61 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 26J67QGDKL;
 					};
 					88CDAF1D1CCF076B0017DE61 = {
 						CreatedOnToolsVersion = 7.2;
@@ -290,11 +372,19 @@
 				88CDAF041CCF076B0017DE61 /* PhotoBrowser */,
 				88CDAF1D1CCF076B0017DE61 /* PhotoBrowserTests */,
 				88CDAF281CCF076B0017DE61 /* PhotoBrowserUITests */,
+				883E7C001D48A44400A344A6 /* frameworkTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		883E7BFF1D48A44400A344A6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		88CDAF031CCF076B0017DE61 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -370,6 +460,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		883E7BFD1D48A44400A344A6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				883E7C091D48A44400A344A6 /* frameworkTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		88CDAF011CCF076B0017DE61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -378,6 +476,7 @@
 				88CDAF101CCF076B0017DE61 /* ViewController.m in Sources */,
 				88C84B181D3E67DC00D84BBF /* KBLoadingView.m in Sources */,
 				88CDAF0D1CCF076B0017DE61 /* AppDelegate.m in Sources */,
+				883E7BDF1D45D41800A344A6 /* ImageView.m in Sources */,
 				88A3C1911D3E2ECD00B4BB02 /* KBBarView.m in Sources */,
 				88A3C18B1D3E2E8C00B4BB02 /* KBPhotoBrowser.m in Sources */,
 				88CDAF0A1CCF076B0017DE61 /* main.m in Sources */,
@@ -403,6 +502,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		883E7C061D48A44400A344A6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 88CDAF041CCF076B0017DE61 /* PhotoBrowser */;
+			targetProxy = 883E7C051D48A44400A344A6 /* PBXContainerItemProxy */;
+		};
 		88CDAF201CCF076B0017DE61 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 88CDAF041CCF076B0017DE61 /* PhotoBrowser */;
@@ -435,6 +539,30 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		883E7C111D48A44400A344A6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = frameworkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = lwq.frameworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoBrowser.app/PhotoBrowser";
+			};
+			name = Debug;
+		};
+		883E7C121D48A44400A344A6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = frameworkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = lwq.frameworkTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PhotoBrowser.app/PhotoBrowser";
+			};
+			name = Release;
+		};
 		88CDAF301CCF076B0017DE61 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -594,6 +722,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		883E7C151D48A44400A344A6 /* Build configuration list for PBXNativeTarget "frameworkTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				883E7C111D48A44400A344A6 /* Debug */,
+				883E7C121D48A44400A344A6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		88CDAF001CCF076B0017DE61 /* Build configuration list for PBXProject "PhotoBrowser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

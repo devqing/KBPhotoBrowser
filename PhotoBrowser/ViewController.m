@@ -8,8 +8,9 @@
 
 #import "ViewController.h"
 #import "KBPhotoBrowser.h"
+#import "ImageView.h"
 
-@interface ViewController () <UIScrollViewDelegate>
+@interface ViewController () <UIScrollViewDelegate,ImageViewDelegate>
 
 @property (nonatomic, strong) NSArray *imageNames;
 
@@ -22,18 +23,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    button.center = CGPointMake(100, 200);
-    [button addTarget:self action:@selector(buttonClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:button];
+    ImageView *view = [[ImageView alloc] initWithFrame:CGRectMake(20, 100, 280, 300)];
+    view.delegate = self;
+    [self.view addSubview:view];
     
+    [self.view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(test)]];
 }
 
-- (void)buttonClick
+- (void)test
 {
-    KBPhotoBrowser *photoBrowser = [[KBPhotoBrowser alloc] initWithImages:self.imageNames index:3];
+    NSLog(@"1111");
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"2222");
+}
+
+- (void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"3333");
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    NSLog(@"4444");
+}
+
+- (void)imageView:(ImageView *)image didClickButton:(UIButton *)button atIndex:(NSInteger)index
+{
+    KBPhotoBrowser *photoBrowser = [[KBPhotoBrowser alloc] initWithImages:self.imageNames index:index];
     [photoBrowser show];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
